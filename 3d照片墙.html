@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      :root,
+      body {
+        height: 100%;
+      }
+      body {
+        perspective: 2000px;
+        transform-style: preserve-3d;
+      }
+      div.wrapper {
+        position: absolute;
+        transform-style: preserve-3d;
+        left: 50%;
+        top: 50%;
+        width: 300px;
+        height: 300px;
+        transform: translate(-50%, -50%);
+        animation: round 30s linear infinite;
+      }
+      img {
+        position: absolute;
+        /* backface-visibility:hidden; */
+        width: 300px;
+      }
+      @keyframes round {
+        0% {
+          transform: translate(-50%, -50%) rotateY(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotateY(360deg);
+        }
+      }
+      img:nth-of-type(1) {
+        transform: rotatey(45deg) translateZ(500px);
+      }
+      img:nth-of-type(2) {
+        transform: rotatey(90deg) translateZ(500px);
+      }
+      img:nth-of-type(3) {
+        transform: rotatey(135deg) translateZ(500px);
+      }
+      img:nth-of-type(4) {
+        transform: rotatey(180deg) translateZ(500px);
+      }
+      img:nth-of-type(5) {
+        transform: rotatey(225deg) translateZ(500px);
+      }
+      img:nth-of-type(6) {
+        transform: rotatey(270deg) translateZ(500px);
+      }
+      img:nth-of-type(7) {
+        transform: rotatey(315deg) translateZ(500px);
+      }
+      img:nth-of-type(8) {
+        transform: rotatey(360deg) translateZ(500px);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <img src="./images/1.jpg" alt="#" />
+      <img src="./images/2.jpg" alt="#" />
+      <img src="./images/3.jpg" alt="#" />
+      <img src="./images/4.jpg" alt="#" />
+      <img src="./images/5.jpg" alt="#" />
+      <img src="./images/6.jpg" alt="#" />
+      <img src="./images/7.jpg" alt="#" />
+      <img src="./images/8.jpg" alt="#" />
+    </div>
+    <script>
+      document.body.onmousemove = function (e) {
+        console.log(1);
+        this.style.perspectiveOrigin = "" + e.pageX + "px " + e.pageY + "px"; //随着鼠标移动到额位置改变景深位置
+      };
+    </script>
+  </body>
+</html>

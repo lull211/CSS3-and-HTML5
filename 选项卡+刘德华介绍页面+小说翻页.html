@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="referrer" content="no-referrer"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+ <style>
+   * {
+margin: 0;
+padding: 0;
+}
+body {
+height: 100%;
+background-color: #1f1f1f;
+}
+
+/* 菜单区域 */
+.tab {
+position: absolute;
+width: 100%;
+height: 80%;
+left: calc(50%);
+top: calc(50%);
+transform: translate(-50%, -50%);
+/* background-image: url('../images/刘亦菲.jpg'); */
+background-size: cover;
+/* background-color: rgba(81, 97, 113,0.5); */
+}
+.tab .box {
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 1200px;
+height: 100%;
+margin: 0 auto;
+/* background-image: url('./images/刘亦菲.jpg'); */
+}
+.tab .box .menus {
+width: 160px;
+height: 400px;
+background-color: rgba(147, 144, 150, 1);
+display: flex;
+list-style: none;
+border-radius: 10px;
+overflow: hidden;
+flex-direction: column;
+}
+.tab .box .menus li {
+height: 40px;
+line-height: 40px;
+text-align: center;
+font-size: 20px;
+box-sizing: border-box;
+color: #fff;
+/* border-bottom:2px solid rgba(0, 0, 0, .3) ; */
+background-color: rgb(146, 143, 150);
+cursor: pointer;
+transition: all 0.3s;
+}
+.tab .box .menus li:last-child {
+border: 0;
+}
+.bg {
+height: 110px !important;
+background-color: rgba(24, 22, 33,0.8) !important;
+}
+
+/* 菜单区域END  */
+
+/* 展示区域 */
+.tab .box .main {
+position: relative;
+height: 470px;
+width: 740px;
+margin-left: 50px;
+border-radius: 10px;
+overflow: hidden;
+background-color: rgba(0, 0, 0, 0.5);
+}
+.tab .box .main .scroll {
+position: absolute;
+top: calc(50% - 200px);
+width: 100%;
+height: 2000px;
+display: flex;
+flex-direction: column;
+overflow: hidden;
+transition: all 0.3s;
+}
+.tab .box .main .scroll .tab_right {
+width: 100%;
+height: 400px;
+/* margin: 35px 0; */
+display: flex;
+flex-direction: row;
+flex-wrap: nowrap;
+justify-content: space-around;
+align-items: center;
+}
+.tab .box .main .scroll .tab_right .image {
+width: 200px;
+height: 300px;
+/* background-image: url("../images/刘亦菲1.jpg.crdownload"); */
+background-size: cover;
+transition: all 1s;
+}
+
+.tab .box .main .scroll .tab_right .text {
+height: 330px;
+width: 440px;
+overflow: hidden; 
+color: #fff;
+display: flex;
+flex-direction: column;
+}
+.text .name {
+flex-grow: 1;
+width: 440px;
+padding-bottom: 10px;
+}
+.text .introduce {
+flex-grow: 2;
+
+text-overflow: ellipsis;
+white-space: wrap;
+height: 245px;
+width: 440px;
+column-width: 440px;
+column-gap: 20px ;
+cursor: pointer;
+-webkit-box-orient: vertical;
+transition: all .3s;
+}
+.text p{
+ padding: 5px;
+ display: block;
+ text-align: center;
+}
+/* 展示区域END */
+ </style>
+  </head>
+  <body>
+    <div class="tab">
+      <div class="box">
+        <!-- 菜单 -->
+        <div>
+          <ul class="menus">
+            <li class="">刘亦菲</li>
+            <li class="">刘诗诗</li>
+            <li class="">刘德华</li>
+            <li class="">刘昊然</li>
+            <li class="">刘学义</li>
+          </ul>
+        </div>
+        <!-- 展示区域 -->
+        <div class="main">
+          <div class="scroll">
+            <div class="tab_right">
+
+             <!-- <div class="image">
+             </div>
+             <div class="text">
+              <h1 class="name"><strong></strong> </h1>
+              <div class="introduce">     
+              </div>          
+              <p> &lt;&lt;&nbsp; 可左右拖动&nbsp; &gt;&gt; </p>
+             </div>   -->
+
+            </div>
+            <div class="tab_right">    
+            </div>
+            <div class="tab_right"> 
+            </div>
+            <div class="tab_right">
+            </div>
+            <div class="tab_right">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="tools/jquery-3.6.0.js"></script>
+  <script>
+ var text_arr=[
+      '刘亦菲，1987年8月25日出生于湖北省武汉市，华语影视女演员、歌手，毕业于北京电影学院2002级表演系本科。2002年，因出演电视剧《金粉世家》中白秀珠一角踏入演艺圈   。2003年因主演武侠剧《天龙八部》王语嫣崭露头角   。2004年凭借仙侠剧《仙剑奇侠传》赵灵儿一角获得了高人气与关注度  刘亦菲，1987年8月25日出生于湖北省武汉市，华语影视女演员、歌手，毕业于北京电影学院2002级表演系本科。2002年，因出演电视剧《金粉世家》中白秀珠一角踏入演艺圈   。2003年因主演武侠剧《天龙八部》王语嫣崭露头角   。2004年凭借仙侠剧《仙剑奇侠传》赵灵儿一角获得了高人气与关注度 刘亦菲，1987年8月25日出生于湖北省武汉市，华语影视女演员、歌手，毕业于北京电影学院2002级表演系本科。2002年，因出演电视剧《金粉世家》中白秀珠一角踏入演艺圈   。2003年因主演武侠剧《天龙八部》王语嫣崭露头角   。2004年凭借仙侠剧《仙剑奇侠传》赵灵儿一角获得了高人气与关注度 刘亦菲，1987年8月25日出生于湖北省武汉市，华语影视女演员、歌手，毕业于北京电影学院2002级表演系本科。2002年，因出演电视剧《金粉世家》中白秀珠一角踏入演艺圈   。2003年因主演武侠剧《天龙八部》王语嫣崭露头角   。2004年凭借仙侠剧《仙剑奇侠传》赵灵儿一角获得了高人气与关注度 ',
+
+      '刘诗诗（原名刘诗施），1987年3月10日出生于北京市，中国内地影视女演员、影视出品人。2002年，考入北京舞蹈学院芭蕾舞专业本科班学习。2004年，因在爱情剧《月影风荷》中饰演女主角叶风荷而踏入演艺圈 [1]  。2010年，凭借仙侠剧《仙剑奇侠传三》受到更多关注 [2]  。2011年，因在宫廷剧《步步惊心》中饰演马尔泰·若曦而赢得颇高人气，并获得第十八届上海电视节白玉兰奖最具人气女演员奖刘诗诗（原名刘诗施），1987年3月10日出生于北京市，中国内地影视女演员、影视出品人。2002年，考入北京舞蹈学院芭蕾舞专业本科班学习。2004年，因在爱情剧《月影风荷》中饰演女主角叶风荷而踏入演艺圈 [1]  。2010年，凭借仙侠剧《仙剑奇侠传三》受到更多关注 [2]  。2011年，因在宫廷剧《步步惊心》中饰演马尔泰·若曦而赢得颇高人气，并获得第十八届上海电视节白玉兰奖最具人气女演员奖刘诗诗（原名刘诗施），1987年3月10日出生于北京市，中国内地影视女演员、影视出品人。2002年，考入北京舞蹈学院芭蕾舞专业本科班学习。2004年，因在爱情剧《月影风荷》中饰演女主角叶风荷而踏入演艺圈 [1]  。2010年，凭借仙侠剧《仙剑奇侠传三》受到更多关注 [2]  。2011年，因在宫廷剧《步步惊心》中饰演马尔泰·若曦而赢得颇高人气，并获得第十八届上海电视节白玉兰奖最具人气女演员奖 ',
+
+      '刘德华（Andy Lau），1961年9月27日出生于中国香港，籍贯广东新会 [1]  ，华语影视男演员、歌手、制片人、作词人。1981年出演电影处女作《彩云曲》 [2]  。1983年主演的武侠剧《神雕侠侣》在香港获得62点的收视纪录 刘德华（Andy Lau），1961年9月27日出生于中国香港，籍贯广东新会 [1]  ，华语影视男演员、歌手、制片人、作词人。1981年出演电影处女作《彩云曲》 [2]  。1983年主演的武侠剧《神雕侠侣》在香港获得62点的收视纪录 刘德华（Andy Lau），1961年9月27日出生于中国香港，籍贯广东新会 [1]  ，华语影视男演员、歌手、制片人、作词人。1981年出演电影处女作《彩云曲》 [2]  。1983年主演的武侠剧《神雕侠侣》在香港获得62点的收视纪录 ',
+      '刘昊然，1997年10月10日出生于河南省平顶山市，中国内地男演员，毕业于中央戏剧学院表演系本科 [1-2]  2014年，主演电影《北京爱情故事》而正式出道，并凭借该片提名第21届北京大学生电影节最佳新人奖 [3]  。2015年5月，加盟国防教育特别节目《真正男子汉》 [4]  ；7月，以专业和文化双科第一名的成绩被中戏录取 刘昊然，1997年10月10日出生于河南省平顶山市，中国内地男演员，毕业于中央戏剧学院表演系本科 [1-2]  2014年，主演电影《北京爱情故事》而正式出道，并凭借该片提名第21届北京大学生电影节最佳新人奖 [3]  。2015年5月，加盟国防教育特别节目《真正男子汉》 [4]  ；7月，以专业和文化双科第一名的成绩被中戏录取 ',
+      '刘学义，1990年7月6日出生于山东省青岛市，中国内地男演员，毕业于中央戏剧学院表演系。2013年，因出演古装剧《上官婉儿》而正式出道。2016年7月，在古装玄幻剧《青云志》中饰演青云门第一弟子萧逸才，为观众所熟知；8月，主演传奇清装剧《龙珠传奇之无间道》。2017年，参演青春神话剧《天乩之白蛇传说》中饰演妖帝斩荒和天帝；4月，在谍战剧《秋蝉》中饰演林小庄。2019年6月，参演的超级季播剧《怒海潜 ...刘学义，1990年7月6日出生于山东省青岛市，中国内地男演员，毕业于中央戏剧学院表演系。2013年，因出演古装剧《上官婉儿》而正式出道。2016年7月，在古装玄幻剧《青云志》中饰演青云门第一弟子萧逸才，为观众所熟知；8月，主演传奇清装剧《龙珠传奇之无间道》。2017年，参演青春神话剧《天乩之白蛇传说》中饰演妖帝斩荒和天帝；4月，在谍战剧《秋蝉》中饰演林小庄。2019年6月，参演的超级季播剧《怒海潜 ...'
+      ]
+      var name_arr=[
+       '刘亦菲',
+       '刘诗诗',
+       '刘德华',
+       '刘昊然',
+       '刘学义',
+      ]
+      var arr=[
+      'https://bkimg.cdn.bcebos.com/pic/3801213fb80e7bec54e7ad8ae467ae389b504fc23d0c?x-bce-process=image/resize,m_lfit,h_452,limit_1/format,f_auto',
+      'https://bkimg.cdn.bcebos.com/pic/5fdf8db1cb1349540923574aab048558d109b3dedcc0?x-bce-process=image/resize,m_lfit,h_452,limit_1/format,f_auto',
+       'https://bkimg.cdn.bcebos.com/pic/78310a55b319ebc4b745abc7796cd8fc1e178a82b810?x-bce-process=image/resize,m_lfit,h_452,limit_1/format,f_auto',
+       'https://bkimg.cdn.bcebos.com/pic/77094b36acaf2eddd9eb8cbb801001e93901934e?x-bce-process=image/resize,m_lfit,h_452,limit_1/format,f_auto',
+       'https://bkimg.cdn.bcebos.com/pic/d009b3de9c82d158904d537a8d0a19d8bd3e4229?x-bce-process=image/resize,m_lfit,h_452,limit_1/format,f_auto',
+      ]
+      image_arr=[
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fww1.sinaimg.cn%2Fmw690%2F0076Egx8ly1graiu95bj3j31jk2bc4qp.jpg&refer=http%3A%2F%2Fwww.sina.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1628390501&t=c37e6693783c1821866498d4613fa200',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fx0.ifengimg.com%2Fres%2F2020%2F5FD88E74381B1CB7EDE44BBC34F1F76519046333_size528_w641_h898.png&refer=http%3A%2F%2Fx0.ifengimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1628390533&t=1f0d16d0e8edc2dd9982b0633422cb92',
+      'https://img0.baidu.com/it/u=2116039435,3524362836&fm=11&fmt=auto&gp=0.jpg',
+      'https://img1.baidu.com/it/u=1944091690,1196192667&fm=26&fmt=auto&gp=0.jpg',
+      'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Finews.gtimg.com%2Fnewsapp_match%2F0%2F10917477115%2F0.jpg&refer=http%3A%2F%2Finews.gtimg.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1628390364&t=7917c2e26e8ba2d9df03676c1ca0909c',
+      ]
+    $(".menus li").click(function (ev) {
+      $(".menus li").removeClass("bg");
+      $(this).addClass("bg");
+      $('.tab_right').html(
+        ' <div class="image"></div>'+
+             '<div class="text">'+
+              '<h1 class="name"><strong>'+name_arr[index]+'</strong> </h1>'+
+              '<div class="introduce">'+text_arr[index]+'  </div>' +     
+              '<p> &lt;&lt;&nbsp; 可左右拖动&nbsp; &gt;&gt; </p>'+
+             '</div>')
+      var index = $(this).index();
+      $(".tab .scroll").css("margin-top", -index * 400 + "px");
+      $(".tab").css('background-image','url('+arr[index]+')'); //背景
+      $($('.image')[index]).css('background-image','url('+image_arr[index]+')');
+      $($('.name strong')[index]).text(name_arr[index]);
+      $($('.introduce')[index]).text(text_arr[index]);
+
+
+      var startX;
+      var endX;
+      var speedX;
+      $('.text .introduce').mousedown(function(event){
+       startX=event.clientX-this.offsetLeft;
+    }).mouseup (function (e) {
+      endX=e.clientX-this.offsetLeft;
+      speedX=endX-startX;
+      if(speedX<0 ){
+        $('.text .introduce').css({'transform':'translateX(-460px)'})
+      }else{
+        $('.text .introduce').css({'transform':'translateX(0px)'})
+
+      }
+      console.log($('.text .introduce').css('translateX'));
+    })
+ 
+    })
+  </script>
+</html>

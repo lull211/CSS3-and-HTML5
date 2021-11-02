@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+</head>
+<body>
+ <style> 
+ *{
+  padding: 0;
+  margin: 0;
+ }
+ @keyframes cursor{
+  0%{
+   border-color: rgba(0, 0, 0, 0);
+  }
+  50%{
+   border-color: rgba(0, 0, 0, 1);
+  }
+  100%{
+   border-color: rgba(0, 0, 0, 0);
+  }
+ }
+ @keyframes cover {
+  0%{
+   left: 0;
+  }
+  100%{
+   left: 100%;
+  }
+ }
+ div{
+  position: relative;
+  display: inline-block;
+  height: 100px;
+  font-size: 80px;
+  line-height: 100px;
+  font-family: monospace;
+  color: #000;
+ }
+  .text::after{
+   content: '';  
+   position: absolute;
+   height: 90px;
+   width: 100%;
+   left: 0;
+   top: 10px;
+   box-sizing: border-box;
+   background-color: #fff;
+   border-left: 2px solid rgb(57, 57, 172);
+   animation: cursor 1s step-end  infinite,cover 14s steps(14,end) infinite;
+ }
+ </style>
+ <div class="text">abcdefghijklmn</div>
+</body>
+</html>
