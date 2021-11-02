@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Document</title>
+ <style>
+  canvas{
+   border: 1px solid #000;
+  }
+  img{
+   border: 1px solid #000;
+  }
+  #box{
+    border: 1px solid #000;
+    width: 300px;
+			height: 300px;
+      background-size: cover;
+  }
+ </style>
+</head>
+<body>
+ <div id="box"></div>
+ <img src="./2.jpg" alt="">
+ <script src="./gaussBlur.js"></script>
+ <script>
+// var cnavas=document.getElementById("canvas");
+// var context=canvas.getContext("2d");
+// var img=new Image();
+// img.src="2.jpg";
+// img.onload=function(){
+//  //1、画图
+//  context.drawImage(img,50,50,500,500)
+// //2、用canvas导出图片
+//  var imgSrc=canvas.toDataURL();
+//  var newImg=document.getElementsByTagName("img")[0];
+//  newImg.src=imgSrc;
+//  //3、操作图片像素
+//  var data= context.getImageData(0, 0, 500, 500);
+//  console.log(data);
+//  //4、在画布某个位置上导入图片信息
+//  context.putImageData(data, 50, 50);
+ 
+// }
+ </script>
+ <script>
+  
+   /*
+    高斯模糊的思路
+     1、通过drawImage把图片画到canvas里
+     2、通过getImageData取到所有像素的信息
+     3、通过算法改变所有像素的信息，把像素信息对象变成模糊后的像素信息对象
+     4、通过putImageData把修改后的像素信息再画到canvas上
+     5、通过toDataURL方法把图片导出
+     6、在需要的地方通过base64的地址引入图片
+    */
+  var canvas= document.createElement("canvas");
+  canvas.width="300px";
+  canvas.height="300px"
+  var context=canvas.getContext('2d');
+  var img=new Image();
+  img.src="2.jpg";
+  img.onload=function(){
+   window.player.blurImg(img,document.getElementById("box"));
+  }
+ </script>
+</body>
+</html>

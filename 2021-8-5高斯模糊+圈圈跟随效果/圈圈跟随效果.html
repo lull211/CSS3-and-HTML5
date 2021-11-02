@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    canvas {
+      background-color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <script src="./gaussBlur.js"></script>
+  <script>
+    var canvas = document.getElementById("canvas");
+    var context = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    var circleList = [];
+    //产生随机数的函数
+    function randow(min, max) {
+      return Math.floor(Math.random() * (max - min) + min);
+    }
+
+    class Circle {
+      constructor(x, y) {
+        //坐标
+        this.x = x;
+        this.y = y;
+        //速度
+        this.vx = (Math.random() - 0.5) * 3;
+        this.vy = (Math.random() - 0.5) * 3;
+        //颜色，透明度
+        this.color = `rgb(${randow(0, 255)},${randow(0, 255)},${randow(0, 255)})`;
+        this.a = 1;
+      }
+      draw() {//画圆
+        context.beginPath();
+        context.fillStyle = this.color;
+        context.arc(this.x, this.y, 30, 0, Math.PI * 2);
+        context.globalAlpha = this.a;//画布的全局透明度
+        context.globalCompositeOperation = 'lighter';//设置图形重叠时的显示方式
+        context.fill();
+        this.update();
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.a *= 0.98;//透明度慢慢变小
+      }
+     
+    }
+     function render() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        //清除画布
+        circleList.forEach(function (ele, i) {
+          //把所有的源都再画一次（位置变了）
+          ele.draw();
+          if (ele.a < .05) {
+            circleList.splice(i, 1);
+
+          }
+        });
+         requestAnimationFrame(render);//关键帧动画，函数自己调用自己，与定时器同样作用
+      }
+     render();
+    // var circle = new Circle(30, 30);
+    // circle.draw();
+
+    canvas.addEventListener('mousemove',function (ev) {
+      
+      //移动的时候画圆
+      circleList.push(new Circle(ev.clientX,ev.clientY))
+    })
+  </script>
+</body>
+
+</html>

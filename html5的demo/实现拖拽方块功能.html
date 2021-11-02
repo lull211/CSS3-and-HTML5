@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>拖拽物体移动demo</title>
+</head>
+
+<body>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .box1 {
+      position: absolute;
+      width: 200px;
+      height: auto;
+      padding-bottom: 10px;
+      border: 1px solid #000;
+
+    }
+
+    li {
+      position: relative;
+      width: 100px;
+      height: 30px;
+      background-color: #abcdef;
+      margin: 10px auto 0px auto;
+      list-style: none;
+    }
+
+    .box2 {
+      position: absolute;
+      width: 150px;
+      height: auto;
+      padding-bottom: 10px;
+      left: 500px;
+      top: 5px;
+      background-color: tomato;
+      border: 1px solid #000;
+    }
+  </style>
+  <div class="box1">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <div class="box2"> </div>
+  <!-- <script>
+      // 这是实现拖拽方块的功能//
+      var dragDiv = document.getElementsByClassName("drag")[0];
+      var beginX = 0,
+        beginY = 0;
+      dragDiv.ondragstart = function (e) {
+        beginX = e.clientX;
+        beginY = e.clientY;
+      };
+      dragDiv.ondragend = function (e) {
+        var x = e.clientX - beginX;
+        var y = e.clientY - beginY;
+        dragDiv.style.left = dragDiv.offsetLeft + x + "px";
+        dragDiv.style.top = dragDiv.offsetTop + y + "px";
+      };
+    </script> -->
+  <script>
+    var dragDom;
+    var liList = document.getElementsByTagName('li');
+    for (var i = 0; i < liList.length; i++) {
+      liList[i].setAttribute('draggable', true);
+      liList[i].ondragstart = function (e) {
+        dragDom = e.target;
+      }
+    }
+    var box2 = document.getElementsByClassName('box2')[0];
+    box2.ondragover = function (e) {
+      e.preventDefault();
+    }
+    box2.ondrop = function (e) {
+      box2.appendChild(dragDom);
+      dragDom = null;
+    }
+    var box1 = document.getElementsByClassName('box1')[0];
+    box1.ondragover = function (e) {
+      e.preventDefault();
+    }
+    box1.ondrop = function (e) {
+      box1.appendChild(dragDom);
+      dragDom = null;
+    }
+
+  </script>
+</body>
+
+</html>

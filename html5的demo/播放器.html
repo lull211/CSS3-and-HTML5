@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Document</title>
+</head>
+
+<body>
+
+ <style>
+   :root,
+  body{
+   height: 100%;
+  }
+  * {
+   padding: 0;
+   margin: 0;
+  }
+
+  .video_player {
+   position: relative;
+   width: 1000px;
+   height: 500px;
+   margin: 0 auto;
+  }
+
+  video {
+   position: absolute;
+   left: 0;
+   top: 0;
+   width: 1000px;
+   height: 500px;
+  }
+
+  .menu {
+   position: absolute;
+   bottom: -50px;
+   /* display: none; */
+   bottom: 0;
+   width: 100%;
+   height: 50px;
+   background-color: rgba(0, 0, 0, 0.5);
+   transition: all .3s;
+  }
+.full_screen,
+  .vol_add,
+  .vol_ins,
+  .quick,
+  .play {
+   position: absolute;
+   margin-left: 20px;
+   margin-top: -15px;
+   top: 50%;
+   width: 60px;
+   height: 30px;
+   border: 3px solid white;
+   text-align: center;
+   line-height: 30px;
+   color: beige;
+   border-radius: 10px;
+   cursor: pointer;
+  }
+.full_screen:hover,
+  .vol_add:hover,
+  .vol_ins:hover,
+  .quick:hover,
+  .time:hover,
+  .play:hover{
+   transition: all 0.3s;
+   background-color: rgba(0, 0, 0, 0.7);
+   border-color: grey;
+  }
+  .quick {
+   margin-left: 0px;
+   left: 620px;
+  }
+
+  .time {
+   position: absolute;
+   margin-left: 120px;
+   margin-top: -15px;
+   top: 50%;
+   width: 100px;
+   height: 30px;
+   border: 3px solid white;
+   text-align: center;
+   line-height: 30px;
+   color: beige;
+   border-radius: 10px;
+   cursor: pointer;
+  }
+
+  .progress_bar {
+   position: absolute;
+   width: 100%;
+   height: 2px;
+   background-color: gray;
+   left: 0;
+   top: -2px;
+   transition: all .3s;
+   cursor: pointer;
+  }
+
+  .progress_bar div {
+   position: absolute;
+   width: 100%;
+   height: 2px;
+   background-color: tomato;
+   left: 0;
+   top: 0;
+   transition: all .3s;
+  }
+
+  .progress_bar div i {
+   position: absolute;
+   height: 6px;
+   width: 6px;
+   border-radius: 3px;
+   background-color: white;
+   top: -2px;
+   left: 0px;
+   transition: all .3s;
+  }
+
+  .quick_list {
+   display: none;
+   position: absolute;
+   width: 60px;
+   height: 122px;
+   background-color: rgba(0, 0, 0, .5);
+   left: 620px;
+   top: -122px;
+   color: #fff;
+  }
+
+  .quick_list li {
+   display: block;
+   position: relative;
+   height: 30px;
+   width: 100%;
+   color: #fff;
+   line-height: 30px;
+   text-align: center;
+   list-style: none;
+   cursor: pointer;
+   transition: all .3s;
+  }
+
+  .quick_list li:hover {
+   background-color: rgba(255, 255, 255, .5);
+  }
+
+  .vol_add {
+   left: 700px;
+  }
+  .vol_ins {
+   left: 780px;
+  }
+  .full_screen {
+   left: 880px;
+  }
+ </style>
+ <div class="video_player">
+  <video src="例子.mp4"></video>
+  <div class="menu">
+   <div class="play">播放</div>
+   <div class="time">0:00/0:00</div>
+   <div class="progress_bar">
+    <div><i></i></div>
+   </div>
+   <div class="quick">倍速</div>
+   <div class="quick_list">
+    <ul>
+     <li>x1.0</li>
+     <li>x1.25</li>
+     <li>x1.5</li>
+     <li>x2.0</li>
+    </ul>vol_add
+   </div>
+   <div class="vol_add">音量+</div>
+   <div class="vol_ins">音量-</div>
+   <div class="full_screen">全屏</div>
+
+
+  </div>
+ </div>
+ <script type="text/javascript" src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+ <script>
+  var videoPlayer = $('.video_player');
+  var menu = $('.menu');
+  var play = $('.play')[0];//转为原生js对象
+  var video = $('video')[0];
+  var time = $('.time')[0];
+  var progressBar = $('.progress_bar')[0];
+  var quick = $('.quick')[0];
+  var quickList = $('.quick_list')[0];
+  var liList = quickList.getElementsByTagName('ul')[0].getElementsByTagName('li');
+  console.log(video);
+  var volAdd = $('.vol_add')[0];
+  var volIns = $('.vol_ins')[0];
+  var fullScreen=$('.full_screen')[0];
+
+  videoPlayer.mouseenter(function () {
+   menu.css({ "bottom": "0px","opacity":1, "background- color": "rgba(0, 0, 0, 0.5)", "transition": "all .3s 0.5s" });
+  }).mouseleave(function () {
+   menu.css({ "bottom": "-50px", "opacity":0, "background- color": "rgba(0, 0, 0, 0)", "transition": "all .3s  3s" });
+  })
+  play.onclick = function () {
+   if (video.paused) {
+    video.play();
+    play.innerHTML = '暂停';
+
+   } else {
+    video.pause();
+    play.innerHTML = '播放';
+   }
+  }
+
+  progressBar.onmouseenter = function () {
+   progressBar.style.height = "14px";
+   progressBar.style.top = "-14px";
+
+   progressBar.getElementsByTagName("div")[0].style.height = "14px";
+   progressBar.getElementsByTagName("i")[0].style.height = "18px";
+
+  }
+  progressBar.onmouseleave = function () {
+   progressBar.style.height = "2px";
+   progressBar.style.top = "-2px";
+
+   progressBar.getElementsByTagName("div")[0].style.height = "2px";
+   progressBar.getElementsByTagName("i")[0].style.height = "6px";
+
+  }
+  progressBar.onclick = function (e) {
+   var loaction = e.layerX;
+   var width = progressBar.clientWidth;
+   var targetTime = location / width * video.duration;
+   video.currentTime = targetTime;
+  }
+
+  quick.onclick = function (e) {
+   quickList.style.display == "block" ? quickList.style.display = "none" : quickList.style.display = "block";
+  }
+  quickList.onmouseleave = function () {
+   quickList.style.display = "none";
+  }
+  for (let i = 0; i < liList.length; i++) {
+   liList[i].index = i;
+   liList[i].onclick = function () {
+    if (this.index == 0) {
+     video.playbackRate = 1;
+     quick.innerHTML = "倍速";
+    } if (this.index == 1) {
+     video.playbackRate = 1.25;
+     quick.innerHTML = "X1.25";
+    } if (this.index == 2) {
+     video.playbackRate = 1.5;
+     quick.innerHTML = "X1.5";
+    } if (this.index == 3) {
+     video.playbackRate = 2;
+     quick.innerHTML = "X2.0";
+    }
+   }
+
+  }
+  setInterval(() => {
+   var total = video.duration;
+   var nowTime = video.currentTime;
+   time.innerHTML = parseInt(nowTime / 60) + ':' + parseInt(nowTime % 60) + "/" + parseInt(total / 60) + ':' + parseInt(total % 60);
+   //时间除以60取整为分钟，时间除以60取余为秒数
+   var width = nowTime / total * progressBar.clientWidth;
+   progressBar.getElementsByTagName("div")[0].style.width = width + 'px';
+   progressBar.getElementsByTagName("i")[0].style.left = width + 'px';
+  }, 1000 / 30);
+  volAdd.onclick = function () {
+   video.volume = video.volume + 0.1 > 1 ? 1 : video.volume + 0.1;
+  }
+ volIns.onclick = function () {
+  video.volume = video.volume - 0.1 <= 0 ? 0 : video.volume - 0.1;
+ }
+ var bun = true;
+ fullScreen.onclick=function(params) {
+  var dom = document.documentElement;
+  
+   var full = function full() {
+   dom.requestFullscreen();
+   videoPlayer.css({ "width": "100%" });
+   videoPlayer.css({ "height": "100%" });
+   video.style.width = "100%";
+   video.style.height = "100%";
+    $('.full_screen').text("退出");
+   bun = false;
+  };
+  var close = function close() {
+   dom.requestFullscreen();
+   videoPlayer.css({ "width": "1000px" });
+   videoPlayer.css({ "height": "500px" });
+   video.style.width = "100%";
+   video.style.height = "100%";
+  $('.full_screen').text("全屏");
+   bun = true;
+  }
+  bun == true ? full() : close();
+ 
+  // 不能这么写，这么写也没法全屏播放
+  //  videoPlayer.style.width = window.screen.width+"px";
+  // videoPlayer.style.height = window.screen.height + "px";
+  // video.style.width = window.screen.width + "px";
+  // video.style.height = window.screen.height + "px";
+
+ }
+ 
+ </script>
+</body>
+
+</html>
